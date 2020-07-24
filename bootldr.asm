@@ -1,8 +1,7 @@
+; By Lord Dev
 BITS 16
 
 start:
-	; Set up 4K stack after this bootloader
-	; [Remember: Effective Address = Segment*16 + Offset]
 	mov ax, 07C0h   ; Set 'ax' equal to the location of this bootloader divided by 16
 	add ax, 20h     ; Skip over the size of the bootloader divided by 16
 	mov ss, ax      ; Set 'ss' to this location (the beginning of our stack region)
@@ -12,7 +11,7 @@ start:
 	mov ax, 07C0h   ; Set 'ax' equal to the location of this bootloader divided by 16
 	mov ds, ax      ; Set 'ds' to the this location
 
-	; Print our message and stop execution
+	; Print the message and stop execution
 	mov     ax, 0012h  ; Select 80x25 16-color text video mode
 	int     10h
 	; turn-off blinking attribute
